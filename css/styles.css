@@ -15,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -22,6 +23,7 @@ body {
   color: var(--text);
   background-color: var(--secondary);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 h1,
@@ -133,10 +135,12 @@ nav .container {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,
-      #292e2b 0%,
-      rgba(41, 46, 43, 0.8) 50%,
-      rgba(41, 46, 43, 0.6) 100%);
+  background: linear-gradient(
+    90deg,
+    #292e2b 0%,
+    rgba(41, 46, 43, 0.8) 50%,
+    rgba(41, 46, 43, 0.6) 100%
+  );
   z-index: 1;
 }
 
@@ -162,11 +166,8 @@ nav .container {
 .credit-ribbon {
   position: absolute;
   /* stay inside hero section, not sticky */
-  left: 50%;
-  /* center across viewport */
-  transform: translateX(-50%);
-  width: 100vw;
-  /* still span full screen width */
+  left: 0;
+  width: 100%;
   margin: 0;
   overflow: visible;
   z-index: 1;
@@ -292,10 +293,7 @@ nav .container {
   position: relative;
   z-index: 2;
   clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
-  width: 100vw;
-  /* full viewport width */
-  margin-left: calc(50% - 50vw);
-  /* shift so right edge sticks to screen edge */
+  width: 100%;
 }
 
 .hero h1 {
@@ -467,8 +465,10 @@ nav .container {
 
 .about-content {
   display: flex;
+  flex-direction: column;
   gap: 50px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-images {
@@ -511,38 +511,82 @@ nav .container {
   box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.3);
 }
 
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
 .about-image:hover img {
   transform: scale(1.05);
 }
 
-.about-text {
-  flex: 1;
-  padding: 20px;
-}
-
-.about h2 {
-  font-size: 2.5rem;
+/* Our Story text styling */
+.about-title {
+  margin-bottom: 16px;
+  font-size: 2.6rem;
   color: var(--primary);
-  margin-bottom: 30px;
-  position: relative;
-  display: inline-block;
+  text-align: left;
 }
 
-.about h2::after {
-  content: "";
-  position: absolute;
-  width: 50%;
-  height: 4px;
-  background-color: var(--primary);
-  bottom: -10px;
-  left: 0;
-}
-
-.about p {
-  margin-bottom: 20px;
-  color: #ddd;
-  font-size: 1.1rem;
+.about-story {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 32px 32px 28px;
+  font-size: 1rem;
   line-height: 1.8;
+  color: #e0e0e0;
+  text-align: left;
+  background: radial-gradient(
+      circle at top left,
+      rgba(63, 110, 86, 0.25),
+      transparent 55%
+    ),
+    rgba(0, 0, 0, 0.55);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-story::before {
+  content: "\201C";
+  position: absolute;
+  top: -35px;
+  left: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 6rem;
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.about-story p {
+  margin-bottom: 1.2rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.02rem;
+}
+
+.about-strong {
+  font-weight: 700;
+  font-size: 1.08rem;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+.about-italic {
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .about-title {
+    font-size: 2.1rem;
+  }
+
+  .about-story {
+    padding: 24px 18px 20px;
+  }
 }
 
 /* FAQ Section */
@@ -740,10 +784,6 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
-  .about-content {
-    flex-direction: column;
-  }
-
   .about-images {
     width: 100%;
     flex-direction: row;
@@ -764,7 +804,7 @@ footer {
   .hero-right {
     width: 100%;
     height: auto;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .hero-right {
