@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Close mobile menu when clicking on a nav link
+    // Close mobile menu when clicking a nav link
     const navItems = document.querySelectorAll(".nav-links a");
     navItems.forEach(item => {
         item.addEventListener("click", function () {
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // FAQ Accordion
     const faqItems = document.querySelectorAll(".faq-item");
-
     faqItems.forEach(item => {
         const question = item.querySelector(".faq-question");
 
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                const headerOffset = 80; // Height of fixed header
+                const headerOffset = 80; 
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -74,8 +73,17 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    initWaitlistForm();
+    // 🚫 IMPORTANT:
+    // Disable backend waitlist POST handling.
+    // Firebase now fully handles waitlist in index.html.
+    // initWaitlistForm(); ❌ Removed on purpose.
 });
+
+
+// 🚫 The entire backend waitlist implementation is disabled
+// to prevent conflicts and POST /api/waitlist errors.
+
+/*
 
 function initWaitlistForm() {
     const ctaForm = document.querySelector(".cta-form");
@@ -88,8 +96,6 @@ function initWaitlistForm() {
 
     ctaForm.addEventListener("submit", async function (event) {
         event.preventDefault();
-
-        if (!emailInput || !messageEl || !submitButton) return;
 
         const email = emailInput.value.trim().toLowerCase();
         if (!email || !validateEmail(email)) {
@@ -121,12 +127,6 @@ function initWaitlistForm() {
 }
 
 async function submitWaitlistEmail(apiBase, email) {
-    if (!apiBase) {
-        throw new Error(
-            "Waitlist API base URL is not configured. Set data-api-base on <body> or serve the frontend and backend from the same origin."
-        );
-    }
-
     const requestUrl = `${apiBase.replace(/\/$/, "")}/api/waitlist`;
     const response = await fetch(requestUrl, {
         method: "POST",
@@ -172,3 +172,5 @@ function setSubmittingState(button, isSubmitting) {
     button.disabled = isSubmitting;
     button.textContent = isSubmitting ? "Submitting..." : "Join Waitlist";
 }
+
+*/

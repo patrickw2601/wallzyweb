@@ -78,7 +78,7 @@
 
           <div class="cta-card">
             <h3>Get Early Access</h3>
-            <form class="cta-form" novalidate>
+            <form class="cta-form" novalidate onsubmit="return false;">
               <input type="email" name="email" id="cta-email" placeholder="Enter your email" autocomplete="email"
                 required aria-label="Email address to join the waitlist" />
               <button type="submit">Join Waitlist</button>
@@ -346,7 +346,80 @@
       </div>
     </div>
   </footer>
-  <script src="js/script.js"></script>
+  <script src="js/script2.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-analytics.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      getDocs
+    } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+  
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAz8PyS9JuIPnY5nnK_GAsHqtkiSsWmrQc",
+      authDomain: "wallzy-5302a.firebaseapp.com",
+      projectId: "wallzy-5302a",
+      storageBucket: "wallzy-5302a.firebasestorage.app",
+      messagingSenderId: "21589891742",
+      appId: "1:21589891742:web:707886554d2ca5cff1b98f",
+      measurementId: "G-4LB95309L8"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    console.log("=== FIREBASE DEBUG ===");
+console.log("projectId:", firebaseConfig.projectId);
+console.log("authDomain:", firebaseConfig.authDomain);
+console.log("storageBucket:", firebaseConfig.storageBucket);
+console.log("Firestore db:", db);
+  
+    // Waitlist email form logic
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector(".cta-form");
+      const emailInput = document.getElementById("cta-email");
+      const message = document.querySelector(".cta-message");
+  
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // stop page reload
+  
+        const email = emailInput.value.trim();
+  
+        if (!email) {
+          message.textContent = "Please enter a valid email.";
+          message.style.color = "red";
+          return;
+        }
+  
+        try {
+          // 1. Count how many users are already on the waitlist
+          const snapshot = await getDocs(collection(db, "waitlist"));
+          const position = snapshot.size + 1;
+  
+          // 2. Save the email with position
+          await addDoc(collection(db, "waitlist"), {
+            email: email,
+            timestamp: new Date(),
+            position: position
+          });
+  
+          // 3. Show success message with number
+          message.textContent = `🎉 You're waitlist #${position}!`;
+          message.style.color = "green";
+          emailInput.value = "";
+  
+        } catch (error) {
+          console.error("Error saving email:", error);
+          message.textContent = "Something went wrong. Try again.";
+          message.style.color = "red";
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
