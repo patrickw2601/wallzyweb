@@ -32,7 +32,7 @@
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="container">
+    <div class="hero-container">
       <div class="hero-content">
         <div class="hero-left">
           <div class="credit-ribbon top-ribbon">
@@ -45,7 +45,7 @@
               <img src="BOFARED.png" alt="Credit Card">
               <img src="CAPONEPLAT.avif" alt="Credit Card">
               <img src="SAVOR.avif" alt="Credit Card">
-              <img src="AMEXPLAT.avif" alt="Credit Card">
+              <img src="AMEXPLAT.avif" alt="Credit Ca    <div class="hero-container">
               <img src="CHASERESERVE.png" alt="Credit Card">
               <img src="CITIDC.png" alt="Credit Card">
               <img src="WFAC.png" alt="Credit Card">
@@ -128,8 +128,11 @@
           </div>
         </div>
         <div class="hero-right">
-          <h1>Wallzy</h1>
-          <p class="slogan">Wallet Made<br>Made Easy</p>
+          <p class="hero-tagline">Wallzy</p>
+          <h1 class="hero-title">
+            One Smart Card. </br>
+            All Your Credit Cards.
+          </h1>
         </div>
       </div>
     </div>
@@ -138,28 +141,36 @@
   <!-- How It Works -->
   <section id="how-it-works" class="how-it-works">
     <div class="container">
-      <h2>How Wallzy Works</h2>
+      <h2 class="how-it-works-title">How Wallzy Works</h2>
+      <p class="section-subtitle">Wallzy turns your wallet into <span class="subtitle-span">one smart card</span> that automatically picks the best rewards card for each swipe.</p>
       <div class="steps-container">
         <div class="step">
-          <div class="step-number">1</div>
-          <h3>Sign Up</h3>
-          <p>Create your Wallzy account in under a minute with just your email.</p>
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <h3>Sign Up</h3>
+          </div>
+          <p class="step-text">Create your Wallzy account in under a minute using just your email.
+</p>
           <div class="step-image">
             <img src="WALZZY3.jpeg" alt="Sign Up Screen">
           </div>
         </div>
         <div class="step">
-          <div class="step-number">2</div>
-          <h3>Connect</h3>
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <h3>Connect</h3>
+          </div>
           <p>Link your credit cards securely in one app.</p>
           <div class="step-image">
             <img src="wallzy2.jpeg" alt="Connect Bank">
           </div>
         </div>
         <div class="step">
-          <div class="step-number">3</div>
-          <h3>Rewards</h3>
-          <p>Maximize your rewards from all your cards with just one tap.</p>
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <h3>Rewards</h3>
+          </div>
+          <p>Automatically maximize your rewards on every purchase across all of your cards with just one tap.</p>
           <div class="step-image">
             <img src="WALLZY1.jpeg" alt="Dashboard">
           </div>
@@ -172,7 +183,7 @@
   <!-- About Us -->
   <section id="about" class="about">
     <div class="container">
-      <div class="about-container">
+      <div class="about-content">
         <div class="about-story">
           <h2 class="about-title">The Story Behind Wallzy</h2>
           <p>
@@ -193,6 +204,23 @@
             didn’t feel like managing money?</span> What if your wallet was actually smart and not just digital?
           </p>
         </div>
+
+        <div class="about-video">
+          <div class="about-video-frame" data-video-src="https://drive.google.com/file/d/1CYrmTBpicqrUI6eGPBNwYxp1mehHDsUm/preview">
+            <div class="about-video-thumb">
+              <img src="thumbnail.png" alt="Wallzy story video thumbnail">
+              <button class="about-video-play" aria-label="Play Wallzy story video">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+            <iframe
+              src=""
+              title="Wallzy story video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -203,10 +231,6 @@
       <h2>Frequently Asked Questions</h2>
       <div class="faq-container">
         <div class="faq-item">
-          <div class="faq-question">
-            <h3>Is Wallzy free to use?</h3>
-            <span class="toggle-icon">+</span>
-          </div>
           <div class="faq-answer">
             <p>
               Yes! Wallzy offers a free basic plan with all essential
@@ -222,9 +246,18 @@
           </div>
           <div class="faq-answer">
             <p>
-              Wallzy is a single smart card where you can link all your existing credit cards. Our algorithm
-              automatically chooses which linked card is the best for that exact purchase, so you can maximize rewards
-              and use your cards more efficiently.
+             Wallzy is a single smart card where you can link all your existing credit cards. Our algorithm automatically chooses which linked card is the best for that exact purchase, so you can maximize rewards and use your cards more efficiently.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How does Wallzy work?</h3>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+             When you tap your Wallzy card at the point of sale, our system first checks your location, then uses that location to help identify the merchant and its category (MCC) using network and GPS data. Based on that MCC and your linked cards, Wallzy then routes the transaction to the credit card that best fits that specific purchase.
             </p>
           </div>
         </div>
@@ -235,10 +268,7 @@
           </div>
           <div class="faq-answer">
             <p>
-              When you tap your Wallzy card at the point of sale, our system first checks your location, then uses that
-              location to help identify the merchant and its category (MCC) using network and GPS data. Based on that
-              MCC and your linked cards, Wallzy then routes the transaction to the credit card that best fits that
-              specific purchase.
+              Yes. Wallzy functions as a credit card at checkout, but behind the scenes it acts as a smart layer that charges one of your existing credit cards instead of creating a completely separate line of credit.
             </p>
           </div>
         </div>
@@ -318,7 +348,7 @@
           <h3>Quick Links</h3>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#how-it-works">How Wallzy Works</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
@@ -327,7 +357,7 @@
           <h3>Contact Us</h3>
           <p><i class="fas fa-envelope"></i> wallzywallet@gmail.com</p>
           <p><i class="fas fa-phone"></i> (253) 247-6301</p>
-          <p><i class="fab fa-instagram"></i> wallzywallet</p>
+          <p><i class="fab fa-instagram"></i> @wallzywallet</p>
         </div>
       </div>
       <div class="footer-bottom">
